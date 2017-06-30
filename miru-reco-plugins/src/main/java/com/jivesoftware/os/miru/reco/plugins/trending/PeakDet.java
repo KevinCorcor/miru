@@ -55,24 +55,24 @@ public class PeakDet {
             double a = vector[i];
             if (a > mx) {
                 mx = a;
-                mxpos = vector[i];
+                mxpos = i;
             }
             if (a < mn) {
                 mn = a;
-                mnpos = vector[i];
+                mnpos = i;
             }
             if (lookformax == 1) {
                 if (a < mx - triggerDelta) {
-                    maxtab_tmp.add(new Peak(mxpos, i));
+                    maxtab_tmp.add(new Peak(mx, mxpos));
                     mn = a;
-                    mnpos = vector[i];
+                    mnpos = i;
                     lookformax = 0;
                 }
             } else {
                 if (a > mn + triggerDelta) {
-                    //mintab_tmp.add(new Valley(mnpos, i));
+                    //mintab_tmp.add(new Valley(mn, mnpos));
                     mx = a;
-                    mxpos = vector[i];
+                    mxpos = i;
                     lookformax = 1;
                 }
             }
